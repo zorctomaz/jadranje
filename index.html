@@ -15,24 +15,25 @@
 
 <header class="site-header">
   <div class="container nav">
-    <a href="index.html" class="brand">OSEBNI PRISTOP<span>Jadrati.fotra.net</span></a>
+    <a href="#domov" class="brand">OSEBNI PRISTOP<span>Jadrati.fotra.net</span></a>
     <button class="nav-toggle" aria-label="Odpri meni" aria-expanded="false">☰</button>
     <nav class="nav-links">
-      <a href="index.html" class="active">Domov</a>
-      <a href="jaz.html">Jaz</a>
-      <a href="ponudba.html">Ponudba</a>
+      <a href="#domov">Domov</a>
+      <a href="#jaz">Jaz</a>
+      <a href="#ponudba">Ponudba</a>
     </nav>
   </div>
 </header>
 
-<section class="hero">
+<!-- ===================== DOMOV ===================== -->
+<section class="hero" id="domov">
   <div class="container hero-inner">
     <p class="eyebrow" style="color:#2fb6ae;">Osebni pristop k jadranju</p>
     <h1>Odjadraj v neznano.</h1>
     <p class="lead">Individualni tečaji jadranja, vzdrževanje plovila in skiperiranje/transfer — vse z izkušnjami z več kot 20.000 prejadranih navtičnih milj.</p>
     <div class="hero-actions">
-      <a href="ponudba.html" class="btn btn-primary">Poglej ponudbo</a>
-      <a href="jaz.html" class="btn btn-ghost">Spoznaj kapitana</a>
+      <a href="#ponudba" class="btn btn-primary">Poglej ponudbo</a>
+      <a href="#jaz" class="btn btn-ghost">Spoznaj kapitana</a>
     </div>
   </div>
 </section>
@@ -50,7 +51,7 @@
         </span>
         <h3>Individualni tečaj jadranja</h3>
         <p>Na moji jadrnici ali na vašem plovilu — v desetih dneh do samostojnega jadranja.</p>
-        <a href="ponudba.html#tecaj" class="card-link">Preberi več →</a>
+        <a href="#tecaj" class="card-link">Preberi več →</a>
       </article>
       <article class="card">
         <span class="icon">
@@ -58,7 +59,7 @@
         </span>
         <h3>Vzdrževanje plovila</h3>
         <p>Antifouling, tik, lakiranje, motor, inox in leseni deli po meri.</p>
-        <a href="ponudba.html#vzdrzevanje" class="card-link">Preberi več →</a>
+        <a href="#vzdrzevanje" class="card-link">Preberi več →</a>
       </article>
       <article class="card">
         <span class="icon">
@@ -66,13 +67,14 @@
         </span>
         <h3>Transfer / skiperiranje</h3>
         <p>Izbira in najem plovila kjer koli na svetu ali transfer vašega plovila.</p>
-        <a href="ponudba.html#skiperiranje" class="card-link">Preberi več →</a>
+        <a href="#skiperiranje" class="card-link">Preberi več →</a>
       </article>
     </div>
   </div>
 </section>
 
-<section class="about-teaser">
+<!-- ===================== JAZ ===================== -->
+<section class="about-teaser" id="jaz">
   <div class="container split">
     <div class="about-photo">
       <img src="assets/img/kapitan.jpg" alt="Kapitan na krovu jadrnice, oblečen v rdečo jadralno jakno">
@@ -84,9 +86,117 @@
     <div>
       <p class="eyebrow">Jaz</p>
       <h2>Izkušen kapitan z osebnim pristopom</h2>
-      <p>Prečil sem Atlantski ocean, Norveško morje, Mediteransko, Jadransko, Severno in Baltsko morje, Canal du Midi in Belgijski kanal — bil kapitan na ledolomilcu na Norveškem, imam izpit za voditelja čolna do 24 m ter vrsto STCW licenc za varnost na morju.</p>
-      <a href="jaz.html" class="btn btn-outline">Spoznaj me bolje</a>
+      <p>Prečil sem Atlantski ocean, Norveško morje, Mediteransko morje, Jadransko morje, Severno morje, Baltsko morje, Canal du Midi in Belgijski kanal.</p>
+      <div class="chip-list">
+        <span class="chip">Atlantski ocean</span>
+        <span class="chip">Norveško morje</span>
+        <span class="chip">Mediteransko morje</span>
+        <span class="chip">Jadransko morje</span>
+        <span class="chip">Severno morje</span>
+        <span class="chip">Baltsko morje</span>
+        <span class="chip">Canal du Midi</span>
+        <span class="chip">Belgijski kanal</span>
+      </div>
     </div>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="container">
+    <div class="highlight-row">
+      <div class="highlight">
+        <strong>Kapitan</strong>
+        <span>na ledolomilcu na Norveškem</span>
+      </div>
+      <div class="highlight">
+        <strong>Do 24 m</strong>
+        <span>izpit za voditelja čolna</span>
+      </div>
+      <div class="highlight">
+        <strong>Potapljanje</strong>
+        <span>opravljen izpit za potapljanje</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Licence in usposabljanja</p>
+      <h2>Varnost na morju jemljem resno</h2>
+    </div>
+    <div class="cred-grid">
+      <div class="cred"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.4 8.4-8 10-4.6-1.6-8-5-8-10V6z"/></svg>VHF GMDSS</div>
+      <div class="cred"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.4 8.4-8 10-4.6-1.6-8-5-8-10V6z"/></svg>STCW V/2 Passenger safety, cargo safety and hull integrity</div>
+      <div class="cred"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.4 8.4-8 10-4.6-1.6-8-5-8-10V6z"/></svg>STCW V/2 Crisis management and human behaviour</div>
+      <div class="cred"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.4 8.4-8 10-4.6-1.6-8-5-8-10V6z"/></svg>STCW V/2 Passenger safety</div>
+      <div class="cred"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.4 8.4-8 10-4.6-1.6-8-5-8-10V6z"/></svg>STCW V/2 Crowd management</div>
+      <div class="cred"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.4 8.4-8 10-4.6-1.6-8-5-8-10V6z"/></svg>STCW VI/1</div>
+      <div class="cred"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.4 8.4-8 10-4.6-1.6-8-5-8-10V6z"/></svg>STCW VI/6 Designated Security Duties</div>
+    </div>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="container">
+    <div class="gallery-strip" style="grid-template-columns: 1fr 1.3fr;">
+      <img src="assets/img/pecina.jpg" alt="Kapitan stoji na obalni pečini ob sončnem zahodu" style="aspect-ratio: 4/5; object-position: center;">
+      <div class="video-frame">
+        <iframe src="https://www.youtube.com/embed/ANJt-dXkMVA" title="Jadranje" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PONUDBA ===================== -->
+<section id="ponudba">
+  <div class="container">
+    <div class="section-head center">
+      <p class="eyebrow">Storitve</p>
+      <h2>Ponudba</h2>
+    </div>
+
+    <div class="service-block" id="tecaj">
+      <span class="service-icon">
+        <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v10M12 4l5.5 8H12M4 17h16l-2.5 4h-11z"/></svg>
+      </span>
+      <div>
+        <h3>Tečaj jadranja</h3>
+        <p class="lede">V desetih dneh individualnega tečaja vas lahko naučim vsega, kar potrebujete za samostojno jadranje/motoriranje. Tečaj lahko poteka na čudoviti leseni jadrnici, zgrajeni leta 1966, ali pa na plovilu, ki ga najamete sami ali katerega lastnik ste. Tečaji so primerni tudi za otroke.</p>
+      </div>
+    </div>
+
+    <div class="service-block" id="vzdrzevanje">
+      <span class="service-icon">
+        <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+      </span>
+      <div>
+        <h3>Vzdrževanje plovila</h3>
+        <p class="lede">Celovita skrb za vaše plovilo — od trupa do detajlov.</p>
+        <ul class="tag-grid">
+          <li>Antifouling</li>
+          <li>Vzdrževanje tika (čepi, nova paluba, brušenje, mazanje, leseni deli po meri, ...)</li>
+          <li>Lakiranje</li>
+          <li>Vzdrževanje motorja</li>
+          <li>Inox deli</li>
+          <li>Usnjeni deli po meri</li>
+          <li>Leseni deli po meri</li>
+          <li>Šivanje po meri</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="service-block" id="skiperiranje">
+      <span class="service-icon">
+        <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M3 12l5-5M3 12l5 5M21 12l-5-5M21 12l-5 5"/></svg>
+      </span>
+      <div>
+        <h3>Skiperiranje / transfer</h3>
+        <p class="lede">Kot izkušen kapitan lahko skiperiram in pomagam pri izbiri/najemu plovila (kjer koli na svetu) ali pa poskrbim za transfer vašega plovila.</p>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -97,7 +207,7 @@
       <h2>Odjadrajva skupaj v neznano</h2>
       <p>Ne glede na to, ali se šele učite jadrati, potrebujete vzdrževanje plovila ali izkušenega skiperja — z veseljem pomagam.</p>
       <div class="hero-actions">
-        <a href="ponudba.html" class="btn btn-primary">Ogled ponudbe</a>
+        <a href="#domov" class="btn btn-primary">Nazaj na vrh</a>
       </div>
     </div>
   </div>
@@ -107,9 +217,9 @@
   <div class="container footer-inner">
     <span class="footer-brand">OSEBNI PRISTOP</span>
     <nav>
-      <a href="index.html">Domov</a>
-      <a href="jaz.html">Jaz</a>
-      <a href="ponudba.html">Ponudba</a>
+      <a href="#domov">Domov</a>
+      <a href="#jaz">Jaz</a>
+      <a href="#ponudba">Ponudba</a>
     </nav>
     <span>jadrati.fotra.net</span>
   </div>
