@@ -117,6 +117,15 @@ nav.links a:hover, nav.links a.active{ color: var(--yellow); }
 .mobile-nav-select:focus{ outline:2px solid var(--yellow); outline-offset:2px; }
 .mobile-nav-select option{ background: var(--dos-blue); color: var(--white); font-size:1rem; }
 
+.lang-switch{ display:inline-flex; gap:2px; border:2px solid var(--cyan); }
+.lang-btn{
+  font-family:'VT323', monospace; background: var(--dos-blue); color: var(--cyan);
+  border:none; padding:6px 13px; font-size:1.05rem; letter-spacing:.05em; cursor:pointer;
+}
+.lang-btn + .lang-btn{ border-left:2px solid var(--cyan); }
+.lang-btn.active{ background: var(--cyan); color: var(--black); }
+.lang-btn:hover:not(.active){ color: var(--yellow); }
+
 @media (max-width:860px){
   nav.links{ display:none; }
   .mobile-nav-select{ display:inline-block; }
