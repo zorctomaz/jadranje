@@ -101,6 +101,9 @@ header.site{
 }
 header.site.scrolled{ border-bottom-color: var(--cyan); }
 .nav-inner{ display:flex; align-items:center; justify-content:space-between; padding:14px 24px; max-width: var(--maxw); margin:0 auto; }
+.nav-left{ display:flex; align-items:center; gap:16px; }
+.home-btn{ display:inline-flex; align-items:center; justify-content:center; font-size:1.4rem; line-height:1; text-decoration:none; filter:grayscale(1) brightness(1.6); transition: filter .15s ease, transform .15s ease; }
+.home-btn:hover, .home-btn:focus-visible{ filter:none; transform:translateY(-1px); }
 .brand{ display:flex; align-items:center; gap:10px; font-weight:400; letter-spacing:.5px; font-size:1.35rem; text-decoration:none; }
 .brand svg{ width:24px; height:24px; flex:none; }
 .brand-name{ color: var(--yellow); text-shadow: 0 0 5px rgba(255,255,85,0.5); }
