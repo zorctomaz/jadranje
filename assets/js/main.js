@@ -167,8 +167,8 @@
 
     var termLog = document.getElementById('termLog');
     var termHelp = {
-      sl: ['Ukazi: BACK = nazaj na fotra.net    SNAKE = igra Kača', 'HELP = ta pomoč'],
-      en: ['Commands: BACK = back to fotra.net    SNAKE = Snake game', 'HELP = this help']
+      sl: ['Ukazi: BACK = nazaj na fotra.net    SNAKE = igra Kača', 'CLS = počisti zaslon    HELP = ta pomoč'],
+      en: ['Commands: BACK = back to fotra.net    SNAKE = Snake game', 'CLS = clear screen    HELP = this help']
     };
     var termUnknown = {
       sl: function (c) { return ["'" + c + "' ni prepoznan kot ukaz.", 'Vtipkaj HELP za pomoč.']; },
@@ -198,6 +198,7 @@
         return;
       }
       if (norm === 'HELP' || norm === '?') { termPrint(termHelp[currentLang]); return; }
+      if (norm === 'CLS' || norm === 'CLEAR') { termLog.innerHTML = ''; return; }
       termPrint(termUnknown[currentLang](cmd));
     }
     termInput.addEventListener('keydown', function (e) {
