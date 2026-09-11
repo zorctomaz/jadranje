@@ -100,18 +100,19 @@ p{ margin:0 0 1em; color: var(--text-dim); }
 .btn-ghost:hover{ background: var(--cyan); color: var(--black); }
 
 /* ---------- TITLEBAR (matches ai.fotra.net / video.fotra.net) ---------- */
+/* The divider runs the full page width, like every other section border;
+   the icons/title/description stay inside the same centered .wrap column
+   used everywhere else on the page. */
 .titlebar{
   text-align:center;
-  max-width: var(--maxw);
-  margin:0 auto;
-  padding: 22px 24px 18px;
+  padding: 22px 0 18px;
   border-bottom: 2px solid var(--cyan-dim);
-  position:relative;
 }
-.home-btn{ position:absolute; top:22px; left:24px; display:inline-flex; color: var(--cyan); text-decoration:none; transition: color .15s ease, transform .15s ease; }
+.titlebar-inner{ position:relative; }
+.home-btn{ position:absolute; top:0; left:24px; display:inline-flex; color: var(--cyan); text-decoration:none; transition: color .15s ease, transform .15s ease; }
 .home-btn svg{ width:22px; height:22px; flex:none; }
 .home-btn:hover, .home-btn:focus-visible{ color: var(--yellow); transform:translateY(-1px); }
-.lang-toggle{ position:absolute; top:22px; right:24px; display:inline-flex; border:2px solid var(--cyan); }
+.lang-toggle{ position:absolute; top:0; right:24px; display:inline-flex; border:2px solid var(--cyan); }
 .lang-btn{
   font-family:'VT323', monospace; background: var(--dos-blue); color: var(--cyan);
   border:none; padding:6px 13px; font-size:1.05rem; letter-spacing:.05em; cursor:pointer;
@@ -132,7 +133,7 @@ p{ margin:0 0 1em; color: var(--text-dim); }
 
 @media (max-width:420px){
   .wrap{ padding:0 16px; }
-  .titlebar{ padding:18px 16px 16px; }
+  .titlebar{ padding:18px 0 16px; }
   .home-btn{ left:16px; }
   .lang-toggle{ right:16px; }
 }
