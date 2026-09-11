@@ -262,6 +262,8 @@ footer{ background: var(--dos-blue-dark); border-top:2px solid var(--cyan); padd
 
 /* ---------- Footer terminal (BACK / SNAKE commands) ---------- */
 .foot-terminal{ border-top:2px solid var(--cyan-dim); padding:16px 0; }
+.term-log{ display:flex; flex-direction:column; gap:2px; max-height:7.4em; overflow-y:auto; margin-bottom:.5rem; }
+.term-log div{ white-space:pre-wrap; word-break:break-word; }
 .term-line{ display:flex; align-items:center; gap:.5rem; cursor:text; }
 .prompt{ color: var(--white); flex:none; white-space:nowrap; }
 .term-input{
@@ -269,7 +271,6 @@ footer{ background: var(--dos-blue-dark); border-top:2px solid var(--cyan); padd
   color: var(--white); font-family:'VT323', monospace; font-size:1.05rem; caret-color: var(--white);
 }
 .term-input::placeholder{ color: var(--grey); opacity:.85; }
-.term-input.term-error{ color: var(--red); }
 
 /* ---------- SNAKE overlay ---------- */
 .snake-overlay{

@@ -165,31 +165,55 @@
       }
     });
 
-    var termErrors = {
-      sl: function (c) { return "'" + c + "' ni prepoznan ukaz. Poskusi: back, snake"; },
-      en: function (c) { return "'" + c + "' is not a recognized command. Try: back, snake"; }
+    var termLog = document.getElementById('termLog');
+    var termHelp = {
+      sl: ['Ukazi: BACK = nazaj na fotra.net    SNAKE = igra Kača', 'HELP = ta pomoč'],
+      en: ['Commands: BACK = back to fotra.net    SNAKE = Snake game', 'HELP = this help']
     };
-    function runCommand(raw) {
+    var termUnknown = {
+      sl: function (c) { return ["'" + c + "' ni prepoznan kot ukaz.", 'Vtipkaj HELP za pomoč.']; },
+      en: function (c) { return ["'" + c + "' is not a recognized command.", 'Type HELP for help.']; }
+    };
+    function termPrint(lines) {
+      lines.forEach(function (line) {
+        var row = document.createElement('div');
+        row.textContent = line;
+        termLog.appendChild(row);
+      });
+      termLog.scrollTop = termLog.scrollHeight;
+    }
+    function termRunCommand(raw) {
       var cmd = raw.trim();
       if (!cmd) return;
+      termPrint(['C:\\FOTRA\\JADRANJE>' + cmd]);
       var norm = cmd.toUpperCase();
-      if (norm === 'BACK') { window.location.href = 'https://fotra.net/'; return; }
-      if (norm === 'SNAKE') { openSnake(); return; }
-      termInput.classList.add('term-error');
-      termInput.value = '';
-      termInput.placeholder = termErrors[currentLang](cmd);
-      setTimeout(function () {
-        termInput.classList.remove('term-error');
-        termInput.placeholder = termInput.getAttribute(currentLang === 'en' ? 'data-en-ph' : 'data-sl-ph');
-      }, 1600);
+      if (norm === 'BACK') {
+        termPrint([currentLang === 'sl' ? 'Odpiram ...' : 'Opening ...']);
+        window.setTimeout(function () { window.location.href = 'https://fotra.net/'; }, 200);
+        return;
+      }
+      if (norm === 'SNAKE') {
+        termPrint([currentLang === 'sl' ? 'Zaganjam KACA.EXE ...' : 'Launching SNAKE.EXE ...']);
+        window.setTimeout(openSnake, 200);
+        return;
+      }
+      if (norm === 'HELP' || norm === '?') { termPrint(termHelp[currentLang]); return; }
+      termPrint(termUnknown[currentLang](cmd));
     }
     termInput.addEventListener('keydown', function (e) {
       if (e.key === 'Enter') {
         e.preventDefault();
-        runCommand(termInput.value);
+        termRunCommand(termInput.value);
         termInput.value = '';
       }
     });
+    document.querySelector('.foot-terminal').addEventListener('click', function () { termInput.focus(); });
+
+    // Deferred: runs after applyLang(initialLang) below, so the greeting
+    // prints in the language the page actually loads in.
+    setTimeout(function () {
+      termPrint([currentLang === 'sl' ? 'Vtipkaj HELP za seznam ukazov.' : 'Type HELP for a list of commands.']);
+    }, 0);
   })();
 
   var initialLang = 'sl';
