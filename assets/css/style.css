@@ -58,6 +58,13 @@ body::after{
 @keyframes flicker{ 0%,100%{ opacity:1; } 50%{ opacity:.97; } }
 @media (prefers-reduced-motion: reduce){ body::after{ animation:none; } }
 
+/* Outer double-line frame, matching the .screen bezel on fotra.net / ai.fotra.net / video.fotra.net */
+.crt-frame{
+  position:fixed; inset:0; pointer-events:none;
+  border: 6px double var(--cyan);
+  z-index: 950;
+}
+
 img{ max-width:100%; display:block; }
 a{ color: inherit; }
 ::selection{ background: var(--cyan); color: var(--black); }
