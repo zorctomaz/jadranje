@@ -99,36 +99,19 @@ p{ margin:0 0 1em; color: var(--text-dim); }
 .btn-ghost{ background: transparent; border-color: var(--cyan); color: var(--cyan); }
 .btn-ghost:hover{ background: var(--cyan); color: var(--black); }
 
-/* ---------- NAV ---------- */
-header.site{
-  position: fixed; top:0; left:0; right:0; z-index:500;
-  background: var(--dos-blue);
+/* ---------- TITLEBAR (matches ai.fotra.net / video.fotra.net) ---------- */
+.titlebar{
+  text-align:center;
+  max-width: var(--maxw);
+  margin:0 auto;
+  padding: 22px 24px 18px;
   border-bottom: 2px solid var(--cyan-dim);
-  transition: border-color .25s ease;
+  position:relative;
 }
-header.site.scrolled{ border-bottom-color: var(--cyan); }
-.nav-inner{ display:flex; align-items:center; justify-content:space-between; padding:14px 24px; max-width: var(--maxw); margin:0 auto; }
-.nav-left{ display:flex; align-items:center; gap:16px; }
-.home-btn{ display:inline-flex; align-items:center; justify-content:center; color: var(--cyan); text-decoration:none; transition: color .15s ease, transform .15s ease; }
+.home-btn{ position:absolute; top:22px; left:24px; display:inline-flex; color: var(--cyan); text-decoration:none; transition: color .15s ease, transform .15s ease; }
 .home-btn svg{ width:22px; height:22px; flex:none; }
 .home-btn:hover, .home-btn:focus-visible{ color: var(--yellow); transform:translateY(-1px); }
-.brand{ display:flex; align-items:center; gap:10px; font-weight:400; letter-spacing:.5px; font-size:1.35rem; text-decoration:none; }
-.brand svg{ width:24px; height:24px; flex:none; }
-.brand-name{ color: var(--yellow); text-shadow: 0 0 5px rgba(255,255,85,0.5); }
-nav.links{ display:flex; align-items:center; gap:22px; }
-nav.links a{ text-decoration:none; color: var(--cyan); font-size:1.05rem; font-weight:400; transition: color .15s ease; }
-nav.links a:hover, nav.links a.active{ color: var(--yellow); }
-.nav-cta{ display:flex; align-items:center; gap:14px; }
-.mobile-nav-select{
-  display:none; appearance:none; -webkit-appearance:none; -moz-appearance:none;
-  background: var(--dos-blue); border:2px solid var(--cyan); border-radius:0; color: var(--cyan);
-  font-family:'VT323', monospace; font-size:1.25rem; line-height:1; cursor:pointer;
-  width:40px; height:40px; padding:0; text-align:center; text-align-last:center;
-}
-.mobile-nav-select:focus{ outline:2px solid var(--yellow); outline-offset:2px; }
-.mobile-nav-select option{ background: var(--dos-blue); color: var(--white); font-size:1rem; }
-
-.lang-switch{ display:inline-flex; gap:2px; border:2px solid var(--cyan); }
+.lang-toggle{ position:absolute; top:22px; right:24px; display:inline-flex; border:2px solid var(--cyan); }
 .lang-btn{
   font-family:'VT323', monospace; background: var(--dos-blue); color: var(--cyan);
   border:none; padding:6px 13px; font-size:1.05rem; letter-spacing:.05em; cursor:pointer;
@@ -136,23 +119,28 @@ nav.links a:hover, nav.links a.active{ color: var(--yellow); }
 .lang-btn + .lang-btn{ border-left:2px solid var(--cyan); }
 .lang-btn.active{ background: var(--cyan); color: var(--black); }
 .lang-btn:hover:not(.active){ color: var(--yellow); }
-
-@media (max-width:860px){
-  nav.links{ display:none; }
-  .mobile-nav-select{ display:inline-block; }
-  .nav-cta > a.btn-primary{ display:none; }
+.ascii-title{
+  font-size: clamp(2.2rem, 9vw, 3.2rem); line-height:1; letter-spacing:.12em;
+  color: var(--yellow); text-shadow: 0 0 6px rgba(255,255,85,0.5); margin:0 0 .35rem;
 }
+.sub{ font-size: clamp(1rem, 3vw, 1.2rem); color: var(--cyan); letter-spacing:.08em; margin:0; }
+
+/* Kept for the footer's own brand mark */
+.brand{ display:flex; align-items:center; gap:10px; font-weight:400; letter-spacing:.5px; font-size:1.35rem; text-decoration:none; }
+.brand svg{ width:24px; height:24px; flex:none; }
+.brand-name{ color: var(--yellow); text-shadow: 0 0 5px rgba(255,255,85,0.5); }
+
 @media (max-width:420px){
-  .nav-inner{ padding:12px 16px; }
   .wrap{ padding:0 16px; }
-  .brand-name{ display:none; }
-  .mobile-nav-select{ width:36px; height:36px; font-size:1.15rem; }
+  .titlebar{ padding:18px 16px 16px; }
+  .home-btn{ left:16px; }
+  .lang-toggle{ right:16px; }
 }
 
 /* ---------- HERO ---------- */
 .hero{
   position:relative; min-height:100vh; display:flex; align-items:center;
-  overflow:hidden; padding-top:90px; background: var(--dos-blue); scroll-margin-top:0;
+  overflow:hidden; background: var(--dos-blue); scroll-margin-top:0;
 }
 .hero-scrim{
   position:absolute; inset:0; z-index:1;
