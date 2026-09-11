@@ -1,7 +1,8 @@
 (function () {
   "use strict";
 
-  document.getElementById('year').textContent = new Date().getFullYear();
+  var yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 
   /* ---------- Language toggle (SI/EN), matching the FOTRA hub convention ---------- */
   var PAGE_DESC = {
