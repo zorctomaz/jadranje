@@ -32,6 +32,11 @@
       btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
     });
 
+    var termInputEl = document.getElementById('termInput');
+    if (termInputEl) {
+      termInputEl.placeholder = termInputEl.getAttribute(lang === 'en' ? 'data-en-ph' : 'data-sl-ph');
+    }
+
     try { localStorage.setItem('jadranjeLang', lang); } catch (e) {}
   }
 
@@ -40,6 +45,151 @@
       applyLang(btn.getAttribute('data-lang'));
     });
   });
+
+  /* ---------- SNAKE game + BACK/SNAKE terminal commands ---------- */
+  (function () {
+    var overlay = document.getElementById('snakeOverlay');
+    var canvas = document.getElementById('snakeCanvas');
+    var termInput = document.getElementById('termInput');
+    if (!overlay || !canvas || !termInput) return;
+    var ctx = canvas.getContext('2d');
+    var scoreEl = document.getElementById('snakeScore');
+    var msgEl = document.getElementById('snakeMsg');
+    var closeBtn = document.getElementById('snakeClose');
+
+    var GRID = 20;
+    var CELL = canvas.width / GRID;
+    var snake, dir, nextDir, food, score, loopId, gameOver, gameStarted;
+    var msgState = 'idle';
+    var msgs = {
+      sl: { idle: 'PUŠČICE/GUMBI = PREMIK', playing: 'IGRA SE...', over: 'KONEC - ENTER/GUMB=ZNOVA' },
+      en: { idle: 'ARROWS/BTNS = MOVE', playing: 'PLAYING...', over: 'GAME OVER - ENTER/BTN=RESTART' }
+    };
+    function updateMsg() { msgEl.textContent = msgs[currentLang][msgState]; }
+
+    function resetGame() {
+      snake = [{ x: 10, y: 10 }, { x: 9, y: 10 }, { x: 8, y: 10 }];
+      dir = { x: 1, y: 0 }; nextDir = { x: 1, y: 0 };
+      score = 0; gameOver = false; gameStarted = false;
+      placeFood();
+      scoreEl.textContent = 'SCORE: 0';
+      msgState = 'idle'; updateMsg();
+      drawGame();
+    }
+    function placeFood() {
+      var ok = false;
+      while (!ok) {
+        food = { x: Math.floor(Math.random() * GRID), y: Math.floor(Math.random() * GRID) };
+        ok = !snake.some(function (s) { return s.x === food.x && s.y === food.y; });
+      }
+    }
+    function drawGame() {
+      ctx.fillStyle = '#000000'; ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#FF5555'; ctx.fillRect(food.x * CELL, food.y * CELL, CELL, CELL);
+      snake.forEach(function (seg, i) {
+        ctx.fillStyle = i === 0 ? '#FFFFFF' : '#55FF55';
+        ctx.fillRect(seg.x * CELL + 1, seg.y * CELL + 1, CELL - 2, CELL - 2);
+      });
+    }
+    function tick() {
+      if (gameOver) return;
+      dir = nextDir;
+      var head = { x: snake[0].x + dir.x, y: snake[0].y + dir.y };
+      var hitWall = head.x < 0 || head.x >= GRID || head.y < 0 || head.y >= GRID;
+      var hitSelf = snake.some(function (s) { return s.x === head.x && s.y === head.y; });
+      if (hitWall || hitSelf) {
+        gameOver = true; clearInterval(loopId); msgState = 'over'; updateMsg();
+        return;
+      }
+      snake.unshift(head);
+      if (head.x === food.x && head.y === food.y) {
+        score += 10; scoreEl.textContent = 'SCORE: ' + score; placeFood();
+      } else {
+        snake.pop();
+      }
+      drawGame();
+    }
+    function startGame() {
+      if (gameStarted) return;
+      gameStarted = true; msgState = 'playing'; updateMsg();
+      loopId = setInterval(tick, 120);
+    }
+    function applyDir(d) {
+      if (gameOver) return;
+      if (dir.x + d.x !== 0 || dir.y + d.y !== 0) { nextDir = d; }
+      startGame();
+    }
+    var dirMap = { up: { x: 0, y: -1 }, down: { x: 0, y: 1 }, left: { x: -1, y: 0 }, right: { x: 1, y: 0 } };
+    document.querySelectorAll('.dpad-btn').forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (gameOver) { resetGame(); return; }
+        applyDir(dirMap[btn.getAttribute('data-dir')]);
+      });
+    });
+
+    var snakeHistoryPushed = false;
+    function openSnake() {
+      overlay.hidden = false;
+      resetGame();
+      history.pushState({ fotraScreen: 'snake' }, '');
+      snakeHistoryPushed = true;
+    }
+    function closeSnake(viaPopstate) {
+      clearInterval(loopId);
+      overlay.hidden = true;
+      termInput.focus({ preventScroll: true });
+      if (snakeHistoryPushed && !viaPopstate) {
+        snakeHistoryPushed = false;
+        history.back();
+      } else {
+        snakeHistoryPushed = false;
+      }
+    }
+    window.addEventListener('popstate', function () {
+      if (!overlay.hidden) { closeSnake(true); }
+    });
+    if (closeBtn) closeBtn.addEventListener('click', function () { closeSnake(); });
+
+    document.addEventListener('keydown', function (e) {
+      if (!overlay.hidden) {
+        var arrowMap = { ArrowUp: { x: 0, y: -1 }, ArrowDown: { x: 0, y: 1 }, ArrowLeft: { x: -1, y: 0 }, ArrowRight: { x: 1, y: 0 } };
+        if (e.key === 'Escape') { e.preventDefault(); closeSnake(); return; }
+        if (arrowMap[e.key]) { e.preventDefault(); applyDir(arrowMap[e.key]); return; }
+        if (gameOver && e.key === 'Enter') { e.preventDefault(); resetGame(); return; }
+        return;
+      }
+      if (e.key === 'Escape') {
+        window.location.href = 'https://fotra.net/';
+      }
+    });
+
+    var termErrors = {
+      sl: function (c) { return "'" + c + "' ni prepoznan ukaz. Poskusi: back, snake"; },
+      en: function (c) { return "'" + c + "' is not a recognized command. Try: back, snake"; }
+    };
+    function runCommand(raw) {
+      var cmd = raw.trim();
+      if (!cmd) return;
+      var norm = cmd.toUpperCase();
+      if (norm === 'BACK') { window.location.href = 'https://fotra.net/'; return; }
+      if (norm === 'SNAKE') { openSnake(); return; }
+      termInput.classList.add('term-error');
+      termInput.value = '';
+      termInput.placeholder = termErrors[currentLang](cmd);
+      setTimeout(function () {
+        termInput.classList.remove('term-error');
+        termInput.placeholder = termInput.getAttribute(currentLang === 'en' ? 'data-en-ph' : 'data-sl-ph');
+      }, 1600);
+    }
+    termInput.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        runCommand(termInput.value);
+        termInput.value = '';
+      }
+    });
+  })();
 
   var initialLang = 'sl';
   try {

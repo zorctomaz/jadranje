@@ -259,3 +259,63 @@ footer{ background: var(--dos-blue-dark); border-top:2px solid var(--cyan); padd
 .foot-grid a{ text-decoration:none; color: var(--cyan); font-size:1rem; }
 .foot-grid a:hover{ color: var(--yellow); }
 .foot-bottom{ margin-top:40px; padding-top:20px; border-top:1px solid var(--cyan-dim); display:flex; flex-wrap:wrap; gap:14px; justify-content:space-between; align-items:center; color: var(--grey); font-size:.95rem; }
+
+/* ---------- Footer terminal (BACK / SNAKE commands) ---------- */
+.foot-terminal{ border-top:2px solid var(--cyan-dim); padding:16px 0; }
+.term-line{ display:flex; align-items:center; gap:.5rem; cursor:text; }
+.prompt{ color: var(--white); flex:none; white-space:nowrap; }
+.term-input{
+  flex:1; min-width:0; background:transparent; border:none; outline:none; padding:0;
+  color: var(--white); font-family:'VT323', monospace; font-size:1.05rem; caret-color: var(--white);
+}
+.term-input::placeholder{ color: var(--grey); opacity:.85; }
+.term-input.term-error{ color: var(--red); }
+
+/* ---------- SNAKE overlay ---------- */
+.snake-overlay{
+  position:fixed; inset:0; z-index:2000;
+  background: rgba(0,0,20,0.94);
+  display:none; align-items:center; justify-content:center; padding:24px;
+}
+.snake-overlay:not([hidden]){ display:flex; }
+.snake-box{
+  position:relative;
+  width:100%; max-width:360px;
+  border: 6px double var(--cyan);
+  background: var(--dos-blue);
+  padding: clamp(1rem, 4vw, 1.8rem);
+  text-align:center;
+}
+.snake-titlebar{ border-bottom:2px solid var(--cyan-dim); padding-bottom:.7rem; margin-bottom:1rem; }
+.snake-title{
+  font-size: clamp(1.8rem, 7vw, 2.6rem); line-height:1; letter-spacing:.1em; font-weight:400;
+  color: var(--yellow); text-shadow: 0 0 6px rgba(255,255,85,.5); margin:0 0 .3rem;
+}
+.snake-score{ font-size: clamp(1rem, 3vw, 1.2rem); color: var(--cyan); margin:0; }
+.canvas-wrap{ display:flex; justify-content:center; padding:.4rem 0; }
+#snakeCanvas{
+  background: var(--black); border:3px double var(--cyan);
+  width: min(100%, 260px); height:auto; aspect-ratio:1/1; image-rendering:pixelated;
+}
+.dpad{
+  display:grid; grid-template-columns: repeat(3, clamp(44px, 12vw, 54px)); grid-template-rows: repeat(3, clamp(44px, 12vw, 54px));
+  gap:12px; justify-content:center; width:100%; margin:1rem auto 0; -webkit-user-select:none; user-select:none;
+}
+.dpad-btn{
+  font-family:'VT323', monospace; background: var(--dos-blue); color: var(--cyan);
+  border:2px solid var(--cyan); font-size: clamp(1.3rem, 5vw, 1.7rem); line-height:1;
+  display:flex; align-items:center; justify-content:center; cursor:pointer; touch-action:manipulation;
+}
+.dpad-up{ grid-column:2; grid-row:1; } .dpad-left{ grid-column:1; grid-row:2; }
+.dpad-right{ grid-column:3; grid-row:2; } .dpad-down{ grid-column:2; grid-row:3; }
+.dpad-btn:active{ background: var(--cyan); color: var(--black); }
+.snake-status{
+  margin-top:1rem; padding-top:.8rem; border-top:2px solid var(--cyan-dim);
+  font-size: clamp(.9rem, 3vw, 1.1rem); color: var(--grey);
+  display:flex; justify-content:space-between; flex-wrap:wrap; gap:.4rem;
+}
+.snake-close{
+  position:absolute; top:0; right:0; background:none; border:none; color: var(--cyan);
+  font-family:'VT323', monospace; font-size:1.4rem; cursor:pointer; line-height:1; padding:.2rem .4rem;
+}
+.snake-close:hover{ color: var(--yellow); }

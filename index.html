@@ -229,7 +229,38 @@
       <span>© <span id="year"></span> OSEBNI PRISTOP</span>
     </div>
   </div>
+  <div class="foot-terminal">
+    <div class="wrap">
+      <div class="term-line">
+        <label for="termInput" class="prompt">C:\FOTRA\JADRANJE&gt;</label>
+        <input type="text" id="termInput" class="term-input" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="Command input" placeholder="back / snake" data-sl-ph="ukaz: back / snake" data-en-ph="command: back / snake">
+      </div>
+    </div>
+  </div>
 </footer>
+
+<div class="snake-overlay" id="snakeOverlay" hidden>
+  <div class="snake-box">
+    <button type="button" class="snake-close" id="snakeClose" aria-label="Close">✕</button>
+    <div class="snake-titlebar">
+      <p class="snake-title" data-sl="KAČA" data-en="SNAKE">KAČA</p>
+      <p class="snake-score" id="snakeScore">SCORE: 0</p>
+    </div>
+    <div class="canvas-wrap">
+      <canvas id="snakeCanvas" width="220" height="220"></canvas>
+    </div>
+    <div class="dpad" role="group" aria-label="Snake controls">
+      <button type="button" class="dpad-btn dpad-up" data-dir="up" aria-label="Up">&#9650;</button>
+      <button type="button" class="dpad-btn dpad-left" data-dir="left" aria-label="Left">&#9664;</button>
+      <button type="button" class="dpad-btn dpad-right" data-dir="right" aria-label="Right">&#9654;</button>
+      <button type="button" class="dpad-btn dpad-down" data-dir="down" aria-label="Down">&#9660;</button>
+    </div>
+    <div class="snake-status">
+      <span id="snakeMsg" data-sl="PUŠČICE/GUMBI = PREMIK" data-en="ARROWS/BTNS = MOVE">PUŠČICE/GUMBI = PREMIK</span>
+      <span data-sl="ESC=NAZAJ" data-en="ESC=BACK">ESC=NAZAJ</span>
+    </div>
+  </div>
+</div>
 
 <script src="assets/js/main.js"></script>
 </body>
