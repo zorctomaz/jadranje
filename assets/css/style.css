@@ -251,7 +251,7 @@ section#ponudba{ background: var(--bg-alt); border-top:2px solid var(--cyan-dim)
 .check-list svg{ width:18px; height:18px; flex:none; margin-top:3px; color: var(--green); stroke:currentColor; fill:none; }
 
 /* ---------- FOOTER ---------- */
-footer{ background: var(--dos-blue-dark); border-top:2px solid var(--cyan); padding:48px 0 26px; }
+footer{ background: var(--dos-blue-dark); }
 .foot-grid{ display:grid; grid-template-columns: 1.4fr 1fr 1fr; gap:36px; }
 @media (max-width:760px){ .foot-grid{ grid-template-columns:1fr; gap:26px; } }
 .foot-grid h4{ color: var(--yellow); font-size:1.1rem; margin-bottom:12px; }
