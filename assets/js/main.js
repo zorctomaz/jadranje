@@ -39,6 +39,14 @@
     }
 
     try { localStorage.setItem('jadranjeLang', lang); } catch (e) {}
+
+    // Keep the address bar's ?lang= in sync so the current language survives
+    // a refresh, bookmark or share — without adding a back-button entry.
+    try {
+      var url = new URL(window.location.href);
+      url.searchParams.set('lang', lang);
+      history.replaceState(history.state, '', url);
+    } catch (e) {}
   }
 
   document.querySelectorAll('.lang-btn').forEach(function (btn) {
