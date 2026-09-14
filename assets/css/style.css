@@ -40,14 +40,6 @@ body{
   position: relative;
 }
 
-/* CRT scanlines, matching the FOTRA hub look */
-body::before{
-  content:"";
-  position:fixed; inset:0; pointer-events:none;
-  background: repeating-linear-gradient(to bottom,
-    rgba(0,0,0,0.18) 0px, rgba(0,0,0,0.18) 1px, transparent 1px, transparent 3px);
-  z-index: 900;
-}
 body::after{
   content:"";
   position:fixed; inset:0; pointer-events:none;
