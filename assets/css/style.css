@@ -113,28 +113,22 @@ p{ margin:0 0 1em; color: var(--text-dim); }
   border-bottom: 2px solid var(--cyan-dim);
 }
 .titlebar-inner{ position:relative; }
-/* Both rows are bottom-aligned with .ascii-title's own line box (its
-   font-size, since line-height:1) rather than pinned to the top, so their
-   bottom edge lines up with the title text's bottom edge at every width. */
-.icon-links{
-  position:absolute; left:24px;
-  top: calc(clamp(2.2rem, 9vw, 3.2rem) - 22px);
-  display:inline-flex; align-items:center; gap:14px;
+.titlebar-controls{
+  display:flex; align-items:center; justify-content:center; gap:4px;
+  margin-top:0.9rem;
 }
+.icon-links{ display:inline-flex; align-items:center; gap:14px; }
 .icon-links a{ display:inline-flex; color: var(--cyan); text-decoration:none; transition: color .15s ease, transform .15s ease; }
 .icon-links a svg{ width:22px; height:22px; flex:none; }
 .icon-links a:hover, .icon-links a:focus-visible{ color: var(--yellow); transform:translateY(-1px); }
-.lang-toggle{
-  position:absolute; right:24px;
-  top: calc(clamp(2.2rem, 9vw, 3.2rem) - (clamp(0.95rem, 3vw, 1.15rem) + 0.4rem + 4px));
-  display:inline-flex; border:2px solid var(--cyan);
-}
+.lang-toggle{ display:inline-flex; }
 .lang-btn{
   font-family:'VT323', monospace; background: var(--dos-blue); color: var(--cyan);
   border:none; padding:0.2rem 0.6rem; font-size:clamp(0.95rem, 3vw, 1.15rem); line-height:1; letter-spacing:.05em; cursor:pointer;
 }
-.lang-btn + .lang-btn{ border-left:2px solid var(--cyan); }
-.lang-btn.active{ background: var(--cyan); color: var(--black); }
+/* Only the language you can switch TO is shown — the current one stays
+   in the DOM (for the click handler / a11y) but hidden. */
+.lang-btn.active{ display:none; }
 .lang-btn:hover:not(.active){ color: var(--yellow); }
 .ascii-title{
   font-size: clamp(2.2rem, 9vw, 3.2rem); line-height:1; letter-spacing:.12em;
