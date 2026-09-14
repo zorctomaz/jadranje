@@ -105,7 +105,11 @@ p{ margin:0 0 1em; color: var(--text-dim); }
    used everywhere else on the page. */
 .titlebar{
   text-align:center;
-  padding: 22px 0 18px;
+  /* Top padding matches ai.fotra.net's effective gap from the viewport edge
+     to the icon/lang-toggle row: that page's real .screen border (6px) plus
+     its own clamp(1rem,4vw,1.8rem) padding, vs. this page's border being a
+     decorative fixed overlay that doesn't otherwise push content down. */
+  padding: calc(6px + clamp(1rem, 4vw, 1.8rem)) 0 18px;
   border-bottom: 2px solid var(--cyan-dim);
 }
 .titlebar-inner{ position:relative; }
@@ -134,7 +138,7 @@ p{ margin:0 0 1em; color: var(--text-dim); }
 
 @media (max-width:420px){
   .wrap{ padding:0 16px; }
-  .titlebar{ padding:18px 0 16px; }
+  .titlebar{ padding-bottom:16px; }
   .icon-links{ left:16px; }
   .lang-toggle{ right:16px; }
 }
