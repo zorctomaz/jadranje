@@ -109,9 +109,10 @@ p{ margin:0 0 1em; color: var(--text-dim); }
   border-bottom: 2px solid var(--cyan-dim);
 }
 .titlebar-inner{ position:relative; }
-.home-btn{ position:absolute; top:0; left:24px; display:inline-flex; color: var(--cyan); text-decoration:none; transition: color .15s ease, transform .15s ease; }
-.home-btn svg{ width:22px; height:22px; flex:none; }
-.home-btn:hover, .home-btn:focus-visible{ color: var(--yellow); transform:translateY(-1px); }
+.icon-links{ position:absolute; top:0; left:24px; display:inline-flex; align-items:center; gap:14px; }
+.icon-links a{ display:inline-flex; color: var(--cyan); text-decoration:none; transition: color .15s ease, transform .15s ease; }
+.icon-links a svg{ width:22px; height:22px; flex:none; }
+.icon-links a:hover, .icon-links a:focus-visible{ color: var(--yellow); transform:translateY(-1px); }
 .lang-toggle{ position:absolute; top:0; right:24px; display:inline-flex; border:2px solid var(--cyan); }
 .lang-btn{
   font-family:'VT323', monospace; background: var(--dos-blue); color: var(--cyan);
@@ -134,7 +135,7 @@ p{ margin:0 0 1em; color: var(--text-dim); }
 @media (max-width:420px){
   .wrap{ padding:0 16px; }
   .titlebar{ padding:18px 0 16px; }
-  .home-btn{ left:16px; }
+  .icon-links{ left:16px; }
   .lang-toggle{ right:16px; }
 }
 
@@ -262,6 +263,8 @@ footer{ background: var(--dos-blue-dark); }
 
 /* ---------- Footer terminal (BACK / SNAKE commands) ---------- */
 .foot-terminal{ border-top:2px solid var(--cyan-dim); padding:16px 0; }
+.foot-email{ display:block; color: var(--grey); text-decoration:none; font-size:1rem; letter-spacing:.03em; margin-bottom:.7rem; transition: color .15s ease; }
+.foot-email:hover, .foot-email:focus-visible{ color: var(--yellow); }
 .term-log{ display:flex; flex-direction:column; gap:2px; max-height:7.4em; overflow-y:auto; margin-bottom:.5rem; }
 .term-log div{ white-space:pre-wrap; word-break:break-word; }
 .term-line{ display:flex; align-items:center; gap:.5rem; cursor:text; }
