@@ -116,7 +116,7 @@ p{ margin:0 0 1em; color: var(--text-dim); }
 .lang-toggle{ position:absolute; top:0; right:24px; display:inline-flex; border:2px solid var(--cyan); }
 .lang-btn{
   font-family:'VT323', monospace; background: var(--dos-blue); color: var(--cyan);
-  border:none; padding:6px 13px; font-size:1.05rem; letter-spacing:.05em; cursor:pointer;
+  border:none; padding:0.2rem 0.6rem; font-size:clamp(0.95rem, 3vw, 1.15rem); letter-spacing:.05em; cursor:pointer;
 }
 .lang-btn + .lang-btn{ border-left:2px solid var(--cyan); }
 .lang-btn.active{ background: var(--cyan); color: var(--black); }
