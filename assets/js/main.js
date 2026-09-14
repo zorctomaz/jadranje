@@ -33,6 +33,11 @@
       btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
     });
 
+    // fotra.net doesn't share this origin's localStorage, so carry the
+    // current language back to it via ?lang= on the home link.
+    var homeBtn = document.querySelector('.home-btn');
+    if (homeBtn) homeBtn.href = 'https://fotra.net/?lang=' + lang;
+
     var termInputEl = document.getElementById('termInput');
     if (termInputEl) {
       termInputEl.placeholder = termInputEl.getAttribute(lang === 'en' ? 'data-en-ph' : 'data-sl-ph');
@@ -197,7 +202,7 @@
       var norm = cmd.toUpperCase();
       if (norm === 'BACK') {
         termPrint([currentLang === 'sl' ? 'Odpiram ...' : 'Opening ...']);
-        window.setTimeout(function () { window.location.href = 'https://fotra.net/'; }, 200);
+        window.setTimeout(function () { window.location.href = 'https://fotra.net/?lang=' + currentLang; }, 200);
         return;
       }
       if (norm === 'SNAKE') {
